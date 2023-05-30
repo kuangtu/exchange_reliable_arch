@@ -1,8 +1,8 @@
-# 交易所技术架构介绍
+# 交易所、券商技术架构介绍
 
 
 
-# 参考资料
+# 交易所相关参考资料
 
 1、[**Exchange Architecture**](https://medium.com/@sanchety.deepak/exchange-architecture-fbec72643df6)  印度国家交易所交易架构
 
@@ -17,4 +17,18 @@
 3、[大数据时代证券核心交易系统架构演化](https://blog.51cto.com/u_14637492/5509267)
 简介：由上交所技术公司架构师发表在中国系统架构师大会上面。
 描述了上交所交易系统演进、证券交易系统架构挑战、核心交易系统架构演化。
+
+4、[金融交易所技术架构演化](https://www.infoq.com/presentations/financial-exchange-architecture/)
+
+简介：Martin Thompson 大牛在InfoQ上面的演讲。
+
+
+
+# 券商相关参考资料
+
+## 国泰君安
+
+1、[国泰君安新一代核心交易系统网络底座建设实践](https://www.smartx.com/blog/2022/10/fiw2022-recap-gtjazq/)
+
+简介：新一代核心交易系统网络底座建设实践
 
