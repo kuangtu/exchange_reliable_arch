@@ -46,6 +46,52 @@ Aeron在进程或网络边界之间有效地复制有序日志缓冲区，并具
 
 ## 基本使用
 
+在官网帮助文档中，介绍了通过Aeron完成IPC通信的例子。
 
+[aeron-ipc项目中](https://github.com/real-logic/aeron-cookbook-code/blob/main/ipc-core/src/main/java/com/aeroncookbook/ipc/SimplestCase.java)的示例：
 
+### 样例组成
 
+通过4部分组成：Aeron API、媒体驱动器、发布者、订阅者。
+
+样例代码如下：
+
+```java
+public static void main(String[] args)
+{
+    final String channel = "aeron:ipc";
+    final String message = "my message";
+    final IdleStrategy idle = new SleepingIdleStrategy();
+    final UnsafeBuffer unsafeBuffer = new UnsafeBuffer(ByteBuffer.allocate(256));
+    try (MediaDriver driver = MediaDriver.launch();
+        Aeron aeron = Aeron.connect();
+        Subscription sub = aeron.addSubscription(channel, 10);
+        Publication pub = aeron.addPublication(channel, 10))
+    {
+        while (!pub.isConnected())
+        {
+            idle.idle();
+        }
+        unsafeBuffer.putStringAscii(0, message);
+        System.out.println("sending:" + message);
+        while (pub.offer(unsafeBuffer) < 0)
+        {
+            idle.idle();
+        }
+        FragmentHandler handler = (buffer, offset, length, header) ->
+            System.out.println("received:" + buffer.getStringAscii(offset));
+        while (sub.poll(handler, 1) <= 0)
+        {
+            idle.idle();
+        }
+    }
+}
+```
+
+(1) 对象初始化
+
+-  设定了pub/sub通信的通道；
+- 等待策略；
+- 发送缓冲buffer。
+
+(2)创建Aeron对象
