@@ -95,3 +95,8 @@ public static void main(String[] args)
 - 发送缓冲buffer。
 
 (2)创建Aeron对象
+
+- 创建媒体驱动器
+- 创建Aeron对象，作为后续主要的API用于应用程序和Aeron通信
+- 订阅用于接收消息
+- 发布用于发送消息
