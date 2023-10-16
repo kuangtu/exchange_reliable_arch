@@ -141,6 +141,35 @@ Aeron还可以将较小的应用程序消息数据整合到更少的网络消息
 
 
 
+
+
+
+
+# 术语
+
+传输媒体：通用术语，用于指示协议运行的媒体。可以是UDP、ib、共享内存等。
+
+媒体（介质驱动）驱动：用于读写Aeron传输介质的驱动程序
+
+发布者：
+
+发布地址：由通道、流id和会话id标识的消息流的源。
+
+订阅者：
+
+发送者：媒体驱动的一侧
+
+接收者：媒体驱动的一侧
+
+
+
+# 建立连接
+
+数据流是单向的，如果需要双向，则需要两个方向分别建立连接。
+
+## 单播
+
+
 ## 编译
 笔者在CentOS Stream 8上面做了编译，gcc版本、cmake版本等符合编译的条件。编译完成之后在/cppbuild/Release/lib/目录下面生成了库：
 
@@ -154,4 +183,8 @@ Aeron还可以将较小的应用程序消息数据整合到更少的网络消息
 FAILED: no driver heartbeat detected : static aeron::util::MemoryMappedFile::ptr_t aeron::Aeron::mapCncFile(aeron::Context&) : aeron-client/src/main/cpp/Aeron.cpp
 是因为Media Driver没有启动。
 执行`./aeronmd`，然后执行`Ping`:
+
+
+
+
 
