@@ -139,3 +139,19 @@ Aeron还可以将较小的应用程序消息数据整合到更少的网络消息
 
 ## 反压
 
+
+
+## 编译
+笔者在CentOS Stream 8上面做了编译，gcc版本、cmake版本等符合编译的条件。编译完成之后在/cppbuild/Release/lib/目录下面生成了库：
+
+[aeron编译后的库](aeron库.jpg)
+
+
+
+测试：
+在目录`/root/software/aeron/cppbuild/Release/binaries`中有测试程序。可以执行`Ping`，但是会报错：
+
+FAILED: no driver heartbeat detected : static aeron::util::MemoryMappedFile::ptr_t aeron::Aeron::mapCncFile(aeron::Context&) : aeron-client/src/main/cpp/Aeron.cpp
+是因为Media Driver没有启动。
+执行`./aeronmd`，然后执行`Ping`:
+
