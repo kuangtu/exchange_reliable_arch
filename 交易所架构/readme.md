@@ -22,6 +22,8 @@
 
 简介：Martin Thompson 大牛在InfoQ上面的演讲。
 
+5、[Stock Exchange Systems Design Case Study](https://ryanccollins.com/stock-exchange-systems-design-case-study)
+
 
 
 # 券商相关参考资料
